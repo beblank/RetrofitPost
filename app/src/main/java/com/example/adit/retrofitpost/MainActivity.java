@@ -16,12 +16,13 @@ import com.example.adit.retrofitpost.http.model.Post;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.POST;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity{
 
     @BindView(R2.id.et_title) EditText titleEt;
     @BindView(R2.id.et_body) EditText bodyEt;
@@ -38,12 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
 
         mAPIService = APIUtils.getAPIService();
-        submitBtn.setOnClickListener(this);
-
     }
 
-    @Override
-    public void onClick(View v) {
+    @OnClick(R2.id.btn_submit)
+    void clickBtn(){
         Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
         String title = titleEt.getText().toString().trim();
         String body = bodyEt.getText().toString().trim();
@@ -78,3 +77,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 }
+
